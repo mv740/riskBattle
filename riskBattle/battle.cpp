@@ -117,7 +117,6 @@ void battle::fight(country attacker, country defender)
 			{
 				attackerRolls.push(roll);
 			}
-
 		}
 		else
 		{
