@@ -1,13 +1,15 @@
-#include "battle.h";
-#include "country.h";
-#include <iostream>;
+#include "battle.h"
+#include "country.h"
+#include <iostream>
+#include <string>
 using namespace std;
 
 int main()
 {
 	country m("canada", "RED", 10);
-	
-	cout << "name is" + m.getName  << endl;
+	country *z = new country("canada","red", 1);
+	string a = z->getName();
+	cout << "name is" << a << endl;
 	
 
 	//cmd prompt doesn't close

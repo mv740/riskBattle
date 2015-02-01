@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+using namespace std;
 class country
 {
 public:
@@ -8,6 +10,9 @@ public:
 	string getName();
 	string getOwner();
 	int getArmy();
+
+	void setOwner(string newOwner);
+	void setArmy(int newArmy);
 
 private:
 	string name;
