@@ -11,8 +11,8 @@ public:
 
 private:
 	int rollDice();
-	void rollSortAttack(int& firstRoll, int& secondRoll, int& thirdRoll);
-	void rollSortDefence(int& firstRoll, int& secondRoll);
+	void sortRolls(int& firstRoll, int& secondRoll);
+	void sortRolls(int& firstRoll, int& secondRoll, int& thirdRoll);
 	void winner(int DiceUsedbyAttack,country& attacker, country& defender);
 	void loser();
 	void status(country& attacker, country& defender);

@@ -22,7 +22,14 @@ int battle::rollDice()
 	return roll;
 }
 
-void battle::rollSortAttack(int& firstRoll, int& secondRoll, int& thirdRoll)
+
+void battle::sortRolls(int& firstRoll, int& secondRoll)
+{
+	if (secondRoll > firstRoll)
+		swap(secondRoll, firstRoll);
+	//firstroll is higher roll 
+}
+void battle::sortRolls(int& firstRoll, int& secondRoll, int& thirdRoll)
 {
 	if (thirdRoll > secondRoll)
 		swap(thirdRoll, secondRoll);
@@ -30,15 +37,8 @@ void battle::rollSortAttack(int& firstRoll, int& secondRoll, int& thirdRoll)
 		swap(thirdRoll, firstRoll);
 	if (secondRoll> firstRoll)
 		swap(secondRoll, firstRoll);
-
 	//firstroll is higher roll 
 }
-void battle::rollSortDefence(int& firstRoll, int& secondRoll)
-{
-	if (secondRoll > firstRoll)
-		swap(secondRoll, firstRoll);
-}
-
 
 int battle::fight(country& attacker, country& defender)
 {
@@ -86,9 +86,8 @@ int battle::fight(country& attacker, country& defender)
 		}
 
 		//sort all the rolls, high to low
-		rollSortAttack(attackRoll1, attackRoll2, attackRoll3);
-		rollSortDefence(defenceRoll1, defenceRoll2);
-
+		sortRolls(attackRoll1, attackRoll2, attackRoll3);
+		sortRolls(defenceRoll1, defenceRoll2);
 
 		//Display rolls
 
@@ -163,10 +162,26 @@ void battle::winner(int DiceUsedbyAttack, country& attacker, country& defender){
 	cin >> moveArmy;
 
 	/// ASK QUESTION ABOUT THIS
-	while (moveArmy < DiceUsedbyAttack || moveArmy > attacker.getArmy())
+	while (moveArmy < DiceUsedbyAttack || moveArmy > attacker.getArmy() || moveArmy == attacker.getArmy())
 		{
-			cout << " place a number of armies in the conquered country which is greater or equal than the number of dice that was used";
+			if (attacker.getArmy() == 2)
+			{
+				//moveArmy is =1 , dice used is 2 
+				//user can only send 1 unit because he need to keep at least one in the attacker country 
+				break;
+			}
+			if (moveArmy == attacker.getArmy())
+			{
+				cout << "You need to at least leave one army in the attacker country" << endl;
+				cout << "how many army do you wish to move to your new country ?" << endl;
+			}
+			else
+			{
+				cout << " place a number of armies in the conquered country which is greater or equal than the number of dice that was used";
+
+			}
 			cin >> moveArmy;
+
 		}
 
 	attacker.setArmy(attacker.getArmy() - moveArmy);
