@@ -153,7 +153,8 @@ void battle::loser()
 void battle::winner(int DiceUsedbyAttack, country& attacker, country& defender){
 
 	defender.setOwner(attacker.getOwner());
-	cout << "Attacker has won, he is the new owner of " << defender.getName() << endl;
+	cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!---WINNER ---!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+	cout << "\nAttacker has won, he is the new owner of " << defender.getName() << endl;
 
 	int moveArmy;
 	//how you many soldier in new country
@@ -162,6 +163,7 @@ void battle::winner(int DiceUsedbyAttack, country& attacker, country& defender){
 	cin >> moveArmy;
 
 	/// ASK QUESTION ABOUT THIS
+
 	while (moveArmy < DiceUsedbyAttack || moveArmy > attacker.getArmy() || moveArmy == attacker.getArmy())
 		{
 			if (attacker.getArmy() == 2)
@@ -263,18 +265,23 @@ void battle::skirmish(country& attacker, country& defender)
 void battle::war(country& attacker, country& defender)
 {
 	int choice = -1;
-	cout << "choose a war option: " << endl;
-	cout << "0 --> skirmish" << endl;
-	cout << "1 --> blitz (all in attack mode) " << endl;
-	cout << "press enter to exit" << endl;
-	cin >> choice;
+	while (choice !=0 && choice !=1 && choice !=2)
+	{
+		cout << "\n-----------------------------------------------------" << endl;
+		cout << "choose a war option: " << endl;
+		cout << "0 --> skirmish" << endl;
+		cout << "1 --> blitz (all in attack mode) " << endl;
+		cout << "2---> exit" << endl;
+		cout << "select ==> ";
+		cin >> choice;
+	}
 	switch (choice)
 	{
 	case 0: skirmish(attacker, defender);
 		break;
 	case 1: blitz(attacker, defender);
 		break;
-	default: //exit 
+	case 2: //exit 
 		break;
 	}
 }

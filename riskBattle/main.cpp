@@ -30,15 +30,20 @@ int main()
 	battle risk;
 	
 	//user is red
-	//show current world map 
-	cout << "CURRENT WORLD MAP ( user is red) " << endl;
+	//show current world map
+	cout << "***********************************************************" <<endl;
+	cout << "*                        RISK BATTLE                      *" << endl;
+	cout << "***********************************************************" << endl;
+	cout << "\nCURRENT WORLD MAP ( user is red) " << endl;
+	cout << "-------------------------------------" << endl;
 	for (int i = 0; i < 5; i++)
 	{
 		cout << world[i].getName() << " Owner is : " << world[i].getOwner() << " army : " << world[i].getArmy() << endl;
 	}
 
 	int choiceAttacker = -1;
-	cout << "\n\nYour turn has started, please select your country from the list below" <<endl << "(choose number)" << endl;
+	cout << "\n\nYour turn has started \nplease select your country from the list below (choose number)" << endl;
+	cout << "--------------------------------------------------------------" << endl;
 	for (int i = 0; i < 5; i++)
 	{
 		if (world[i].getOwner() == "red" && world[i].getArmy() >=2)
@@ -46,9 +51,11 @@ int main()
 			cout << i <<"--->Country : " << world[i].getName() << " army : " << world[i].getArmy() << endl;
 		}
 	}
+	cout << "select => ";
 	cin >> choiceAttacker;
 	int choicedefender = -1;
-	cout << "Choose which country to attack from the list below" << endl << "(choose number)" << endl;
+	cout << "\nChoose which country to attack from the list below" << endl << "(choose number)" << endl;
+	cout << "--------------------------------------------------------------" << endl;
 	for (int i = 0; i < 5; i++)
 	{
 		if (world[i].getOwner() == "blue")
@@ -56,9 +63,11 @@ int main()
 			cout << i << "--->Country : " << world[i].getName() << " army : " << world[i].getArmy() << endl;
 		}
 	}
+	cout << "select => ";
 	cin >> choicedefender;
 	risk.war(world[choiceAttacker], world[choicedefender]);
 
+	cout << "\n****************************************************************" << endl;
 	cout << "\nWar is over! new world map : " <<endl;
 	for (int i = 0; i < 5; i++)
 	{
