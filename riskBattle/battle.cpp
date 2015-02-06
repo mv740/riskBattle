@@ -166,7 +166,7 @@ void battle::winner(int DiceUsedbyAttack, country& attacker, country& defender){
 
 	while (moveArmy < DiceUsedbyAttack || moveArmy > attacker.getArmy() || moveArmy == attacker.getArmy())
 		{
-			if (attacker.getArmy() == 2)
+			if (attacker.getArmy() == DiceUsedbyAttack && moveArmy < attacker.getArmy())
 			{
 				//moveArmy is =1 , dice used is 2 
 				//user can only send 1 unit because he need to keep at least one in the attacker country 
